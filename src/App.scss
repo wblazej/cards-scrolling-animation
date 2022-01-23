@@ -1,0 +1,25 @@
+body {
+    height: 400em;
+}
+.cards {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+
+    .card {
+        position: sticky;
+        top: 100px;
+        padding: 5em;
+        transition: transform .1s;
+
+        .content {
+            background-color: #fff;
+            height: 50vh;
+            border: 1px solid black;
+        }
+
+        &.small {
+            transform: scale(0.5);
+        }
+    }
+}
