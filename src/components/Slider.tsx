@@ -11,7 +11,7 @@ const Slider = (props: IProps) => {
     const refferences = useRef<Array<HTMLDivElement | null>>([])
 
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        return window.addEventListener('scroll', () => {
             refferences.current.forEach((element, index) => {
                 let current = element
                 let next = refferences.current[index + 1]
@@ -24,7 +24,7 @@ const Slider = (props: IProps) => {
                 }
             })
         })
-    }, [])
+    }, [props.scrollFactor, props.items])
 
     return (
         <div className="cards">
