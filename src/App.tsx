@@ -1,10 +1,15 @@
 import { ReactElement, useEffect, useRef } from 'react';
 import './App.scss';
 import round from './ts/round';
+import Image1 from './img/image1.jpeg';
+import Image2 from './img/image2.jpeg';
+import Image3 from './img/image3.jpeg';
+import Image4 from './img/image4.jpeg';
+import Image5 from './img/image5.jpeg';
 
 interface IProps {
     items: Array<ReactElement>;
-    sizeFactor: number;
+    scrollFactor?: number;
 }
 
 const Slider = (props: IProps) => {
@@ -15,9 +20,10 @@ const Slider = (props: IProps) => {
             refferences.current.forEach((element, index) => {
                 let current = element
                 let next = refferences.current[index + 1]
-                
                 if (next && current) {
-                    let scale = round(Math.max(0, Math.min(1, (next.offsetTop - window.scrollY) / props.sizeFactor)), 2)
+                    let scale = round(Math.max(0, Math.min(1, (next.offsetTop - window.scrollY) / 
+                        (window.innerHeight / (props.scrollFactor ? props.scrollFactor : 1.5)))), 2)
+
                     if (current.style.transform !== `scale(${scale})`)
                         current.style.transform = `scale(${scale})`
                 }
@@ -40,11 +46,12 @@ function App() {
     return (
         <div className="App">
             <div className="something" style={{height: '100vh', width: '100%'}}></div>
-            <Slider sizeFactor={500} items={[
-                <h1>witam</h1>,
-                <p>siema</p>,
-                <p>siema</p>,
-                <p>siema</p>
+            <Slider scrollFactor={1.2} items={[
+                <img src={Image1} />,
+                <img src={Image2} />,
+                <img src={Image3} />,
+                <img src={Image4} />,
+                <img src={Image5} />
             ]} />
         </div>
     );

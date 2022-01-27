@@ -1,25 +1,37 @@
 body {
     height: 400em;
+    background-color: #2C394B;
 }
+
+* {
+    color: #FF4C29
+}
+
 .cards {
-    width: 70%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    max-width: 1000px;
 
     .card {
         position: sticky;
         top: 100px;
-        padding: 5em;
+        padding-bottom: 5em;
         transition: transform .1s;
 
         .content {
             background-color: #fff;
-            height: 50vh;
-            border: 1px solid black;
-        }
+            height: 70vh;
+            box-shadow: 0 0 40px 1px #00000044;
+            background-color: #082032;
+            border-radius: 1em;
+            overflow: hidden;
 
-        &.small {
-            transform: scale(0.5);
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
         }
     }
 }
